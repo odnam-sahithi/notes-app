@@ -1,5 +1,5 @@
 
-  // Your web app's Firebase configuration
+// Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   var firebaseConfig = {
     apiKey: "AIzaSyA8-lY-775GMdTUPqxf_sFqvZuLqNqZyzU",
@@ -14,26 +14,41 @@
   firebase.initializeApp(firebaseConfig);
   //firebase.analytics();
 const auth = firebase.auth();
+ 
 function signup(){
     var email = document.getElementById("email");
     var password = document.getElementById("password");
     const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
     promise.catch(e => alert(e.message));
-    alert("signed up")
+    alert("signed up")//signup function
      
 }
+
 function signin(){
     var email = document.getElementById("email");
     var password = document.getElementById("password");
     const promise = auth.signInWithEmailAndPassword(email.value,password.value);
     promise.catch(e => alert(e.message));
-    alert("signed in")
-}
-function signout(){
-    auth.signout();
-    alert("signed out");
-}
-auth.onAuthStateChanged(function(user){
+
+    promise.then( user =>{
+        alert("signed in");
+
+
+        window.location.href="index2.html"
+    })}
+
+        
+
+        function signout(){
+            auth.signout().then(()=>
+           { alert("signed out");
+           window.location.href="index1.html";})
+         }
+
+    
+
+
+/*auth.onAuthStateChanged(function(user){
     if(user){
         var email = user.email;
         alert("user" + email);
@@ -43,4 +58,4 @@ auth.onAuthStateChanged(function(user){
     }else{
         //no user is signed in
     }
-});
+});*/

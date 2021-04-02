@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MY NOTES APP</title>
+    <link rel="stylesheet" href="style2.css">
+`<!-- The core Firebase JS SDK is always required and must be listed first 
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.10/firebase-auth.js"></script>-->
+
+
+  </head>
+<body>
+  <button onclick="signout()" id ="signout">signout</button>
+<header>
+  <div class="container">
+   <marquee> <h1>Welcome to notes app!!</h1></marquee>
+    <form>
+      <input type="text" id="note-title" placeholder="note tittle">
+      <textarea name="" id="note-text" placeholder="note details"></textarea>
+      <button id="add-btn">Add Note</button>
+    </form>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <h2>Your Notes</h2>
+    <hr>
+    <div id="notes" class="notes">
+        
+
+    <div id="note">
+
+      <p class="note-counter">Note 1</p>
+      <h3 class="note-tittle">Hello world</h3>
+      <p class="note-text">Some Note Text</p>
+      <p class="date"></p>
+      <p class="time"></p>
+      <button class="note-btn">Delete Note</button>
+      <button class="note-btn edit-btn">Edit note</button>
+    
+    </div>  
+
+
+    </div>
+
+  </div>
+
+
+
+</section>
+
+<script src="index2.js"></script>
+<script src="index1.js"></script>
+
+
+</body>
+
+
+</html>

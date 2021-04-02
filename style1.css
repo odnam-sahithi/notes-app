@@ -1,5 +1,5 @@
 body{
-    background-color: aquamarine;
+    background-image: url("background.jpg");
 }
 h3{
     color: darkgreen;
@@ -53,18 +53,73 @@ h3{
     margin-left: 550px;
 }
 
-#signout{
-    background-color: #0ae981;
-    color: white;
-    border: none;
-    font-weight: bold;
-    padding: 15px 32px;
-    border-radius: 10px;
-    text-align: center;
-    font-size: 13px;
-    margin-top: 20px;
-    margin-left: 550px;
-}
-button: :hover{
+
+
+button :hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+
+.bubble img{
+    width: 50px;
+    animation: bubble 7s linear infinite;
+
+
+}
+
+.bubble{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: -70px;
+}
+
+
+@keyframes bubble{
+    0%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50%{
+        
+        opacity: 1;
+    }
+    70%{
+        
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+    0%{
+        transform: translateY(-80vh);
+        opacity: 0;
+    }
+     
+
+
+}
+.bubble img:nth-child(1){
+    animation-delay: 2s;
+}
+.bubble img:nth-child(2){
+    animation-delay: 1s;
+} 
+.bubble img:nth-child(3){
+    animation-delay: 3s;
+}
+.bubble img:nth-child(4){
+    animation-delay: 4s;
+}
+.bubble img:nth-child(5){
+    animation-delay: 2s;
+}
+.bubble img:nth-child(6){
+    animation-delay: 3s;
+}
+.bubble img:nth-child(7){
+    animation-delay: 4s;
 }
