@@ -1,6 +1,6 @@
 
 
-const currentUser = localStorage.getItem(currentUser);
+const currentUser = localStorage.getItem("currentUser");
 
 shownotes();
 let addBtn = document.getElementById("add-btn");
@@ -21,7 +21,7 @@ if (addTitle.value == "" || addTxt.value == ""){
     return alert("Please add note title and details");
 }
 
-let notes = localStorage.getItem("notes");
+let notes = localStorage.get(currentUser)
 if (notes == null){
     notesObj = [];
 
@@ -72,7 +72,7 @@ function shownotes(){
     
     </div> 
     ` ;
-    let noteElem = document.getElementById(currentUser);
+    let noteElem = document.getElementById("notes");
     if (notesObj.length != 0){
         noteElem.innerHTML = html;
     } else{
