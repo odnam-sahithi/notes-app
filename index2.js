@@ -1,8 +1,8 @@
 
 
+const currentUser = localStorage.getItem(currentUser);
 
-
-
+shownotes();
 let addBtn = document.getElementById("add-btn");
 let addTitle = document.getElementById("note-title")
 let addTxt = document.getElementById("note-text")
@@ -41,7 +41,7 @@ let myObj = {
     
 }
 notesObj.push(myObj);
-localStorage.setItem("notes" ,JSON.stringify(notesObj));
+localStorage.setItem(currentUser,JSON.stringify(notesObj));
 addTxt.value = "";
 addTitle.value = "";
 
@@ -49,7 +49,7 @@ showNotes();
 })
 
 function shownotes(){
-    let notes = localStorage.getItem("notes");
+    let notes = localStorage.getItem(currentUser);
     if (notes==null){
     notesObj = []
 
@@ -72,20 +72,23 @@ function shownotes(){
     
     </div> 
     ` ;
+    let noteElem = document.getElementById(currentUser);
+    if (notesObj.length != 0){
+        noteElem.innerHTML = html;
+    } else{
+        noteElem.innerHTML = "No Notes Yet!";
+    }
+
+
         
         });
 
-        let noteElem = document.getElementById("notes");
-        if (notesObj.length != 0){
-            noteElem.innerHTML = html;
-        } else{
-            noteElem.innerHTML = "No Notes Yet!";
-        }
+        
        }
  function deleteNote(index){
        let confirmDel = confirm("You are deleting this note!!");
        if (confirmDel == true){
-        let notes = localStorage.getItem("notes");
+        let notes = localStorage.getItem("c");
         if (notes == null){
             notesObj = [];
         
@@ -94,13 +97,14 @@ function shownotes(){
         }
 
        notesObj.splice(index, 1);
-       localStorage.setItem("notes",JSON.stringify(notesObj));
+       localStorage.setItem(currentUser,JSON.stringify(notesObj));
        shownotes();
      }
 
  }
+
 function editNote(index){
-    let notes =localStorage.getItem("notes");
+    let notes =localStorage.getItem(currentUser);
     if (addTitle.value !== "" || addTxt.value !== ""){
     return alert("please clear the form before editing a note");
     }
@@ -118,7 +122,7 @@ notesObj.findIndex((element,index) =>{
 })
 
 notesObj.splice(index, 1);
-localStorage.setItem("notes",JSON.stringify(notesObj));
+localStorage.setItem(currentUser,JSON.stringify(notesObj));
 shownotes();
 }
 shownotes();
