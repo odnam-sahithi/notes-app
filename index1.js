@@ -7,6 +7,7 @@ function signup(){
     const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
     promise.catch(e => alert(e.message));
     alert("signed up")//signup function
+    localStorage.setItem("currentUser",email.value);
      
 }
 
@@ -16,30 +17,23 @@ function signin(){
     const promise = auth.signInWithEmailAndPassword(email.value,password.value);
     promise.catch(e => alert(e.message));
 
-    promise.then( user =>{
+    promise.then(( userCredential) =>{
         alert("signing in...");
        auth.onAuthStateChanged(function(user){
         if(user){
             var email = user.email;
             alert("user" + email);
             //is signed in
-            localStorage.setItem("currentUser",JSON.stringify(email));
+            var user = userCredential.user;
+            var use = firebase.auth().currentUser.uid;
+            localStorage.setItem("uid",use);
     
     
         }else{
             //no user is signed in
         }
-        
-
-
-
 
     });
-
-
-
-
-
 
         window.location.href="index2.html"
     })}
