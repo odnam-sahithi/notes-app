@@ -6,9 +6,7 @@ function signup(){
     var password = document.getElementById("password");
     const promise = auth.createUserWithEmailAndPassword(email.value,password.value);
     promise.catch(e => alert(e.message));
-    alert("signed up")//signup function
-    localStorage.setItem("currentUser",email.value);
-     
+    alert("signed up")//signup function 
 }
 
 function signin(){

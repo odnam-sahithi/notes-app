@@ -14,9 +14,10 @@
    <marquee> <h1>Welcome to notes app!!</h1></marquee>
     <form>
       <input type="text" id="note-title" placeholder="note tittle">
-      <textarea name="" id="note-text" placeholder="note details"></textarea>
-     
+      <textarea type="" id="note-text" placeholder="note details"></textarea>
+    <input class="hidden" id="saveindex" style="display: none;">
       <button id="add-btn">Add Note</button>
+     <button id="save-btn"  onclick="saveNote()"  style="display: none;">save notes</button>
     
     </form>
   </div>
