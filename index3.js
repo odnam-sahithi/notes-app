@@ -118,6 +118,12 @@ function saveNote(){
     if(addTxt.value!=0 && addTitle!=0){
         unotesObj[saveindex].title=addTitle.value;
         unotesObj[saveindex].text=addTxt.value;
+        unotesObj[saveindex].date=date;
+        unotesObj[saveindex].month=month;
+        unotesObj[saveindex].year=year;
+        unotesObj[saveindex].hour=hour;
+        unotesObj[saveindex].minute=minute;
+
     }
     localStorage.setItem("notes",JSON.stringify(unotesObj));
     
