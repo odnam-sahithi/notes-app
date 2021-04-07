@@ -1,11 +1,10 @@
-let use=localStorage.getItem("uid")
+let useruid=localStorage.getItem("uid")
 
 
 
-let addBtn = document.getElementById("add-btn");
+let addNote = document.getElementById("add-btn");
 let addTitle = document.getElementById("note-title");
 let addTxt = document.getElementById("note-text");
-
 let today = new Date();
 var date = today.getDate();
 var month = today.getMonth() +1;
@@ -15,22 +14,22 @@ var minute = today.getMinutes();
 
 
 
-addBtn.addEventListener("click", (e) => {
+addNote.addEventListener("click", (e) => {
 if (addTitle.value == "" || addTxt.value == ""){
     return alert("Please add note title and details");
 }
 
-let notes = localStorage.getItem("notes");
-if (notes == null){
-    notesObj = [];
+let usernotes = localStorage.getItem("notes");
+if (usernotes == null){
+    unotesObj = [];
 
 }else {
-    notesObj = JSON.parse(notes);
+    unotesObj = JSON.parse(usernotes);
 }
 
 
-let myObj = {
-   u:use, 
+let userObj = {
+   useruidd:useruid, 
     title: addTitle.value,
     text: addTxt.value,
     date : date,
@@ -39,32 +38,32 @@ let myObj = {
     hour : hour,
     minute : minute,
 }
-notesObj.push(myObj);
-localStorage.setItem("notes" ,JSON.stringify(notesObj));
+unotesObj.push(userObj);
+localStorage.setItem("notes" ,JSON.stringify(unotesObj));
 addTxt.value = "";
 addTitle.value = "";
 
-showNotes();
+shownotes();
 })
 
 function shownotes(){
-    let notes = localStorage.getItem("notes");
-    if (notes==null){
-    notesObj = []
+    let usernotes = localStorage.getItem("notes");
+    if (usernotes==null){
+    unotesObj = []
 
     }else{
-        notesObj = JSON.parse(notes);
+        unotesObj = JSON.parse(usernotes);
     }
 
     let html = "";
-    notesObj.forEach(function(element,index){
-        if(use==notesObj[index].u){
+    unotesObj.forEach(function(element,index){
+        if(useruid==unotesObj[index].useruidd){
         html += `
         <div id="note">
-      <h3 class="note-tittle">${element.title}</h3>
-      <p class="note-text">${element.text}</p>
-      <p class="date">${element.date}/${element.month}/${element.year}</p>
-        <p class="time">${element.hour}:${element.minute}</p>
+      <h3 class="note-tittle">TITTLE :${element.title}</h3>
+      <p class="note-text">NOTE :${element.text}</p>
+      <p class="date">DATE :${element.date}/${element.month}/${element.year}</p>
+        <p class="time">TIME :${element.hour}:${element.minute}</p>
       <button id="${index}" onclick ="deleteNote(this.id)" class="note-btn">Delete Note</button>
       <button id="${index}" onclick="editNote(this.id)" class="note-btn edit-btn">Edit note</button>
     
@@ -73,26 +72,26 @@ function shownotes(){
         
         });
 
-        let noteElem = document.getElementById("notes");
-        if (notesObj.length != 0){
-            noteElem.innerHTML = html;
+        let noteHtml = document.getElementById("notes");
+        if (unotesObj.length != 0){
+            noteHtml.innerHTML = html;
         } else{
-            noteElem.innerHTML = "No Notes Yet!";
+            noteHtml.innerHTML = "No Notes !!";
         }
        }
  function deleteNote(index){
-       let confirmDel = confirm("You are deleting this note!!");
+       let confirmDel = confirm("You are about to delete this note!!");
        if (confirmDel == true){
-        let notes = localStorage.getItem("notes");
-        if (notes == null){
-            notesObj = [];
+        let usernotes = localStorage.getItem("notes");
+        if (usernotes == null){
+            unotesObj = [];
         
         }else {
-            notesObj = JSON.parse(notes);
+           unotesObj = JSON.parse(usernotes);
         }
 
-       notesObj.splice(index, 1);
-       localStorage.setItem("notes",JSON.stringify(notesObj));
+       unotesObj.splice(index, 1);
+       localStorage.setItem("notes",JSON.stringify(unotesObj));
        shownotes();
      }
 
@@ -103,24 +102,24 @@ function editNote(index){
     let saveindex= document.getElementById("saveindex"); 
     let savenote = document.getElementById("save-btn");
     saveindex.value = index;
-    let notes= localStorage.getItem("notes");
-    let notesObj = JSON.parse(notes);
+    let usernotes= localStorage.getItem("notes");
+    let unotesObj = JSON.parse(usernotes);
     let addTitle=document.getElementById("note-title");
     let addTxt=document.getElementById("note-text");
-   addTxt.value = notesObj[index].text;
-   addTitle.value=notesObj[index].title;
+   addTxt.value = unotesObj[index].text;
+   addTitle.value=unotesObj[index].title;
     savenote.style.display="block";
-    addBtn.style.display="none";
+    addNote.style.display="none";
 }
 function saveNote(){
-    let notes= localStorage.getItem("notes");
-    let notesObj = JSON.parse(notes);
+    let usernotes= localStorage.getItem("notes");
+    let unotesObj = JSON.parse(usernotes);
     let saveindex= document.getElementById("saveindex").value;
     if(addTxt.value!=0 && addTitle!=0){
-        notesObj[saveindex].title=addTitle.value;
-        notesObj[saveindex].text=addTxt.value;
+        unotesObj[saveindex].title=addTitle.value;
+        unotesObj[saveindex].text=addTxt.value;
     }
-    localStorage.setItem("notes",JSON.stringify(notesObj));
+    localStorage.setItem("notes",JSON.stringify(unotesObj));
     
     savenote.style.display="none";
     shownotes();

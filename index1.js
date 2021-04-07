@@ -23,8 +23,8 @@ function signin(){
             alert("user" + email);
             //is signed in
             var user = userCredential.user;
-            var use = firebase.auth().currentUser.uid;
-            localStorage.setItem("uid",use);
+            var useruid = firebase.auth().currentUser.uid;
+            localStorage.setItem("uid",useruid);
     
     
         }else{
